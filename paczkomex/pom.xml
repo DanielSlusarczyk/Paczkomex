@@ -15,6 +15,7 @@
 	<description>Backend Application</description>
 	<properties>
 		<java.version>11</java.version>
+		<snakeyaml.version>1.33</snakeyaml.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -48,6 +49,9 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
+					<layers>
+						<enabled>true</enabled>
+					</layers>
 					<excludes>
 						<exclude>
 							<groupId>org.projectlombok</groupId>
