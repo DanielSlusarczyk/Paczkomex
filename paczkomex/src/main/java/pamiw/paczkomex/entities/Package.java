@@ -3,10 +3,7 @@ package pamiw.paczkomex.entities;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table
@@ -16,6 +13,10 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Package {
-    @Id @GeneratedValue private Long id;
+    @Id @GeneratedValue @Column
+    private Long id;
     private String name;
+    @OneToOne
+    @JoinColumn(name="dest_locker_id", referencedColumnName = "id")
+    private Locker destLocker;
 }
