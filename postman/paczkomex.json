@@ -1,0 +1,488 @@
+{
+	"info": {
+		"_postman_id": "9d08667b-f522-4ba0-99c3-020dcb57526b",
+		"name": "paczkomex",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23952180"
+	},
+	"item": [
+		{
+			"name": "packages",
+			"item": [
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{backend_url}}/package",
+							"host": [
+								"{{backend_url}}"
+							],
+							"path": [
+								"package"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{backend_url}}/package/:id",
+							"host": [
+								"{{backend_url}}"
+							],
+							"path": [
+								"package",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"Parcel v1.0\"}"
+						},
+						"url": {
+							"raw": "{{backend_url}}/package",
+							"host": [
+								"{{backend_url}}"
+							],
+							"path": [
+								"package"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\":1, \"name\":\"Parcel v1.1\"}"
+						},
+						"url": {
+							"raw": "{{backend_url}}/package/:id",
+							"host": [
+								"{{backend_url}}"
+							],
+							"path": [
+								"package",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "destination",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\":1, \"name\":\"Parcel v1.1\"}"
+						},
+						"url": {
+							"raw": "{{backend_url}}/package/:packageId/to/:lockerId",
+							"host": [
+								"{{backend_url}}"
+							],
+							"path": [
+								"package",
+								":packageId",
+								"to",
+								":lockerId"
+							],
+							"variable": [
+								{
+									"key": "packageId",
+									"value": "6"
+								},
+								{
+									"key": "lockerId",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "destination Copy",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\":1, \"name\":\"Parcel v1.1\"}"
+						},
+						"url": {
+							"raw": "{{backend_url}}/package/:packageId/to/:lockerId",
+							"host": [
+								"{{backend_url}}"
+							],
+							"path": [
+								"package",
+								":packageId",
+								"to",
+								":lockerId"
+							],
+							"variable": [
+								{
+									"key": "packageId",
+									"value": "6"
+								},
+								{
+									"key": "lockerId",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\":{{id}}, \"name\":\"Parcel v1.1\"}"
+						},
+						"url": {
+							"raw": "{{backend_url}}/parcels/:id",
+							"host": [
+								"{{backend_url}}"
+							],
+							"path": [
+								"parcels",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "lockers",
+			"item": [
+				{
+					"name": "Define Cities",
+					"item": [
+						{
+							"name": "create",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"city\":\"Warszawa\"}"
+								},
+								"url": {
+									"raw": "{{backend_url}}/locker",
+									"host": [
+										"{{backend_url}}"
+									],
+									"path": [
+										"locker"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"city\":\"Radom\"}"
+								},
+								"url": {
+									"raw": "{{backend_url}}/locker",
+									"host": [
+										"{{backend_url}}"
+									],
+									"path": [
+										"locker"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"city\":\"Sosnowiec\"}"
+								},
+								"url": {
+									"raw": "{{backend_url}}/locker",
+									"host": [
+										"{{backend_url}}"
+									],
+									"path": [
+										"locker"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"city\":\"Piotrków Trybunalski\"}"
+								},
+								"url": {
+									"raw": "{{backend_url}}/locker",
+									"host": [
+										"{{backend_url}}"
+									],
+									"path": [
+										"locker"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"city\":\"Wrocław\"}"
+								},
+								"url": {
+									"raw": "{{backend_url}}/locker",
+									"host": [
+										"{{backend_url}}"
+									],
+									"path": [
+										"locker"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "get by id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{backend_url}}/locker/:id",
+							"host": [
+								"{{backend_url}}"
+							],
+							"path": [
+								"locker",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{backend_url}}/locker",
+							"host": [
+								"{{backend_url}}"
+							],
+							"path": [
+								"locker"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"Parcel v1.0\"}"
+						},
+						"url": {
+							"raw": "{{backend_url}}/package",
+							"host": [
+								"{{backend_url}}"
+							],
+							"path": [
+								"package"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

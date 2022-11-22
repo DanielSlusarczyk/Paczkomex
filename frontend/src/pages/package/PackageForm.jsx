@@ -56,7 +56,7 @@ export const PackageForm = () => {
           </FormGroup>
           <FormGroup>
             <Button color="primary" type="submit">Save</Button>{' '}
-            <Button color="secondary" tag={Link} to="/parcels">Cancel</Button>
+            <Button color="secondary" tag={Link} to="/packages">Cancel</Button>
           </FormGroup>
         </Form>
       </Container>

@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import {packagesApi} from "../../api/packagesApi";
 
 export const PackagePage = () => {
-  const [parcels, setPackages] = useState([]);
+  const [packages, setPackages] = useState([]);
 
   useEffect(() => {
     packagesApi.getAll()
@@ -16,20 +16,23 @@ export const PackagePage = () => {
   const remove = (id) => {
     packagesApi.delete(id)
     .then(() => {
-      setPackages((parcels) => parcels.filter((parcel) => parcel.id !== id));
+      setPackages((packages) => packages.filter((pack) => pack.id !== id));
     });
   }
 
-  const parcelList = parcels.map(parcel => {
-    return <tr key={parcel.id}>
-      <td style={{whiteSpace: 'nowrap'}}>{parcel.id}</td>
-      <td style={{whiteSpace: 'nowrap'}}>{parcel.name}</td>
+  const parcelList = packages.map(pack => {
+
+    return <tr key={pack.id}>
+      <td style={{whiteSpace: 'nowrap'}}>{pack.id}</td>
+      <td style={{whiteSpace: 'nowrap'}}>{pack.name}</td>
+      <td style={{whiteSpace: 'nowrap'}}>{pack.srcLocker != null ? pack.srcLocker.city : "Brak"}</td>
+      <td style={{whiteSpace: 'nowrap'}}>{pack.destLocker != null ? pack.destLocker.city : "Brak"}</td>
       <td align="center">
         <ButtonGroup>
-          <Button size="sm" color="primary" tag={Link} to={"/parcels/" + parcel.id}>
+          <Button size="sm" color="primary" tag={Link} to={"/packages/" + pack.id}>
             Edite
           </Button>
-          <Button size="sm" color="danger" onClick={() => remove(parcel.id)}>
+          <Button size="sm" color="danger" onClick={() => remove(pack.id)}>
             Delete
           </Button>
         </ButtonGroup>
@@ -40,12 +43,14 @@ export const PackagePage = () => {
   return (
       <div>
         <Container fluid>
-          <h3>Parcel</h3>
+          <h3>Package</h3>
           <Table striped bordered hover size="sm">
             <thead>
             <tr>
-              <th width="80px">Id</th>
-              <th>Name</th>
+              <th width="40px">Id</th>
+              <th width="100px">Name</th>
+              <th width="80px">From</th>
+              <th width="80px">To</th>
               <th width="120px">
                 <div align="center">Action</div>
               </th>
@@ -56,7 +61,7 @@ export const PackagePage = () => {
             </tbody>
           </Table>
           <div className="float-right">
-            <Button color="success" tag={Link} to="/parcels/new">
+            <Button color="success" tag={Link} to="/packages/new">
               Add
             </Button>
           </div>

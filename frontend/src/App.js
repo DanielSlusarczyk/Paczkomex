@@ -12,8 +12,8 @@ export default function App() {
         <NavBar/>
         <Routes>
             <Route index element={<Home/>}/>
-            <Route path='/parcels' element={<PackagePage/>}/>
-            <Route path='/parcels/:parcelId' element={<PackageForm/>}/>
+            <Route path='/packages' element={<PackagePage/>}/>
+            <Route path='/packages/:parcelId' element={<PackageForm/>}/>
             <Route path='/lockers' element={<LockerPage/>}/>
         </Routes>
       </>
