@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {Link, useNavigate, useParams} from 'react-router-dom';
 import {Button, Container, Form, FormGroup, Input, Label} from 'reactstrap';
-import {parcelsApi} from "../../api/parcelsApi";
+import {packagesApi} from "../../api/packagesApi";
 
-export const ParcelForm = () => {
+export const PackageForm = () => {
   const navigate = useNavigate();
   const {parcelId} = useParams();
   const [parcel, setParcel] = useState({
@@ -12,7 +12,7 @@ export const ParcelForm = () => {
 
   useEffect(() => {
     if (parcelId !== 'new') {
-      parcelsApi.getById(parcelId)
+      packagesApi.getById(parcelId)
       .then((res) => {
         setParcel(res.data);
       });
@@ -31,9 +31,9 @@ export const ParcelForm = () => {
     event.preventDefault();
 
     if (parcel.id) {
-      await parcelsApi.update(parcel.id, parcel)
+      await packagesApi.update(parcel.id, parcel)
     } else {
-      await parcelsApi.create(parcel)
+      await packagesApi.create(parcel)
     }
     navigate('/parcels')
   }

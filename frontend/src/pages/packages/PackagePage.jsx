@@ -1,22 +1,22 @@
 import React, {useEffect, useState} from 'react';
 import {Button, ButtonGroup, Container, Table} from 'reactstrap';
 import {Link} from 'react-router-dom';
-import {parcelsApi} from "../../api/parcelsApi";
+import {packagesApi} from "../../api/packagesApi";
 
-export const ParcelPage = () => {
-  const [parcels, setParcels] = useState([]);
+export const PackagePage = () => {
+  const [parcels, setPackages] = useState([]);
 
   useEffect(() => {
-    parcelsApi.getAll()
+    packagesApi.getAll()
     .then((res) => {
-      setParcels(res.data);
+      setPackages(res.data);
     })
   }, []);
 
   const remove = (id) => {
-    parcelsApi.delete(id)
+    packagesApi.delete(id)
     .then(() => {
-      setParcels((parcels) => parcels.filter((parcel) => parcel.id !== id));
+      setPackages((parcels) => parcels.filter((parcel) => parcel.id !== id));
     });
   }
 

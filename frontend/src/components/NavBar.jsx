@@ -11,7 +11,8 @@ export const NavBar = () => {
       <Navbar color="dark" dark expand="md">
         <Nav>
           <NavbarBrand tag={NavLink} to="/" style={style}>Home</NavbarBrand>
-          <NavbarBrand tag={NavLink} to="/parcels" style={style}>Parcels</NavbarBrand>
+          <NavbarBrand tag={NavLink} to="/parcels" style={style}>Packages</NavbarBrand>
+          <NavbarBrand tag={NavLink} to="/lockers" style={style}>Lockers</NavbarBrand>
         </Nav>
       </Navbar>
   );
