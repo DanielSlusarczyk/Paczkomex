@@ -1,4 +1,3 @@
-import {Link} from 'react-router-dom';
 import {Container, Table} from "reactstrap";
 import {useEffect, useState} from "react";
 import {lockersApi} from "../../api/lockersApi";
@@ -16,7 +15,7 @@ export const LockerPage = () => {
         return <tr key={locker.id}>
             <td style={{whiteSpace: 'nowrap'}}>{locker.id}</td>
             <td style={{whiteSpace: 'nowrap'}}>{locker.city}</td>
-            <td style={{whiteSpace: 'nowrap'}}>-/-</td>
+            <td style={{whiteSpace: 'nowrap'}}>{locker.load}/{locker.capacity}</td>
         </tr>
     });
 

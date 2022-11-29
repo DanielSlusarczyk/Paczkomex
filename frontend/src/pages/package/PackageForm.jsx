@@ -35,7 +35,7 @@ export const PackageForm = () => {
     } else {
       await packagesApi.create(parcel)
     }
-    navigate('/parcels')
+    navigate('/packages')
   }
 
   const title = <h2>{parcel.id ? 'Edit parcel' : 'Add Parcel'}</h2>;

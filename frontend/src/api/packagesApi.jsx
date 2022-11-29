@@ -20,11 +20,21 @@ export const packagesApi = {
 
   update(id, parcel) {
     console.log('Update package', id, parcel)
-    return packagesClient.put(`/${id}`, parcel);
+    return packagesClient.put(`/${id}`, parcel)
   },
 
   delete(id) {
     console.log('Delete package', id)
     return packagesClient.delete(`/${id}`)
+  },
+
+  setDestination(id, lockerId) {
+    console.log('Set destination', id, lockerId)
+    return packagesClient.put(`/${id}/to/${lockerId}`)
+  },
+
+  setSource(id, lockerId) {
+    console.log('Set source', id, lockerId)
+    return packagesClient.put(`/${id}/from/${lockerId}`)
   }
 }
