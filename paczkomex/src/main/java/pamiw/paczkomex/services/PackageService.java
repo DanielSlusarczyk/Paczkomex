@@ -41,4 +41,12 @@ public class PackageService {
     public void deleteById(Long id) {
         repo.deleteById(id);
     }
+
+    public int countPackagesToLocker(Long id) {
+        return repo.findPackagesToLocker(id).size();
+    }
+
+    public int countPackagesFromLocker(Long id) {
+        return repo.findPackagesFromLocker(id).size();
+    }
 }

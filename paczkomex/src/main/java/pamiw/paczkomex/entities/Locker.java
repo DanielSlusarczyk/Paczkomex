@@ -13,8 +13,9 @@ import javax.persistence.*;
 @AllArgsConstructor
 public class Locker {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long id;
     private String city;
+    private int capacity;
 }

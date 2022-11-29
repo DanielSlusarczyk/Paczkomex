@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import pamiw.paczkomex.entities.Locker;
 import pamiw.paczkomex.services.LockerService;
+import pamiw.paczkomex.services.PackageService;
 
 import java.util.Collection;
 
@@ -15,6 +16,7 @@ import java.util.Collection;
 @RequiredArgsConstructor
 public class LockerController {
     private final LockerService service;
+    private final PackageService packageService;
 
     @GetMapping
     Collection<Locker> findAll() {
@@ -33,5 +35,11 @@ public class LockerController {
     Locker findById(@PathVariable Long id) {
         log.debug("Find locker with id: {}", id);
         return service.findById(id);
+    }
+
+    @GetMapping("/load/{id}")
+    int getLoadOfLocker(@PathVariable Long id) {
+        log.debug("Load of locker with id: {}", id);
+        return packageService.countPackagesToLocker(id) + packageService.countPackagesFromLocker(id);
     }
 }
