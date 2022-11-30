@@ -6,9 +6,17 @@ export const LockerPage = () => {
     const [lockers, setLockers] = useState([]);
 
     useEffect(() => {
-        lockersApi.getAll().then((res)=> {
-            setLockers(res.data);
-        })
+       const fetch = async () => {
+        const res = await lockersApi.getAll()
+        const data = await Promise.all(res.data.map(async lock => {
+            lock.load = (await lockersApi.getLoad(lock.id)).data;
+            console.log(lock.load)
+            return lock
+        }))
+        setLockers(data);
+        }
+
+        fetch();
     }, []);
 
     const lockerList = lockers.map(locker => {
