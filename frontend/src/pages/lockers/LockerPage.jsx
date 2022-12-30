@@ -1,9 +1,13 @@
 import {Container, Table} from "reactstrap";
 import {useEffect, useState} from "react";
 import {lockersApi} from "../../api/lockersApi";
+import SockJS from 'sockjs-client';
+
 
 export const LockerPage = () => {
     const [lockers, setLockers] = useState([]);
+
+    var socket = new SockJS('http://localhost:8080/hello');
 
     useEffect(() => {
        const fetch = async () => {
