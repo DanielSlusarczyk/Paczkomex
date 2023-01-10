@@ -3,12 +3,10 @@ import {useEffect, useState} from "react";
 import {lockersApi} from "../../api/lockersApi";
 import SockJS from 'sockjs-client';
 
+let stompClient = null;
 
 export const LockerPage = () => {
     const [lockers, setLockers] = useState([]);
-
-    var socket = new SockJS('http://localhost:8080/hello');
-
     useEffect(() => {
        const fetch = async () => {
         const res = await lockersApi.getAll()
@@ -22,6 +20,24 @@ export const LockerPage = () => {
 
         fetch();
     }, []);
+
+    const connect = () => {
+        const Stomp = require("stompjs");
+        var SockJS = require("sockjs-client");
+        SockJS = new SockJS("http://localhost:8080/ws");
+        stompClient = Stomp.over(SockJS);
+        stompClient.connect({}, onConnected, onError);
+    };
+
+    const onConnected = () => {
+        console.log("Test");
+    };
+
+    const onError = (err) => {
+        console.log("Error connecting!");
+    };
+
+    connect();
 
     const lockerList = lockers.map(locker => {
         return <tr key={locker.id}>
