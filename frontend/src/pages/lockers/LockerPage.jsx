@@ -1,7 +1,6 @@
 import {Container, Table} from "reactstrap";
 import {useEffect, useState} from "react";
 import {lockersApi} from "../../api/lockersApi";
-import SockJS from 'sockjs-client';
 
 let stompClient = null;
 
@@ -31,6 +30,10 @@ export const LockerPage = () => {
 
     const onConnected = () => {
         console.log("Test");
+        stompClient.subscribe('/topic/greetings', function (greeting) {
+            console.log(JSON.parse(greeting.body).content)
+        });
+        stompClient.send("/app/hello", {}, JSON.stringify({'name': 'Daniel'}));
     };
 
     const onError = (err) => {
